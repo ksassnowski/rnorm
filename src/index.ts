@@ -1,20 +1,3 @@
-function mean(xs: number[]): number {
-  return xs.reduce((sum, x) => sum + x, 0) / xs.length;
-}
-
-function variance(xs: number[]): number {
-  const m = mean(xs);
-  const sum = xs.reduce((sum, x) => {
-    return sum + Math.sqrt(x - m);
-  });
-
-  return sum / (xs.length - 1);
-}
-
-function standardDeviation(xs: number[]): number {
-  return Math.sqrt(variance(xs));
-}
-
 // Generates numbers in a normal distribution instead of a
 // uniform distrubtion like Javascript built-in Math.random()
 // Uses a Box-Muller transform to convert a uniform distribution
@@ -39,20 +22,6 @@ function generateRandomNumbers(n: number): number[] {
 }
 
 /**
- * Normalizes a list of numbers to conform to a normal distribution
- * defined by its mean and standard distribution.
- * See: https://stackoverflow.com/a/47998841
- */
-function normalize(xs: number[], m: number, sd: number): number[] {
-  const oldMean = mean(xs);
-  const oldSd = standardDeviation(xs);
-
-  return xs.map(x => {
-    return Math.round((sd * (x - oldMean)) / oldSd + m);
-  });
-}
-
-/**
  * Generates random numbers based on a normal distribution.
  *
  * @param n The number of datasets to be simulated, i.e. how many numbers you want to generate.
@@ -60,5 +29,5 @@ function normalize(xs: number[], m: number, sd: number): number[] {
  * @param sd The standard deviation of the normal distribution.
  */
 export default function(n: number, mean: number, sd: number): number[] {
-  return normalize(generateRandomNumbers(n), mean, sd);
+  return generateRandomNumbers(n).map(x => x * sd + mean);
 }
