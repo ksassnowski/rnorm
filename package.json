@@ -1,5 +1,5 @@
 {
-  "name": "rnorm",
+  "name": "rnorm-generate",
   "version": "0.1.0",
   "description": "A function to generate random numbers based on a normal distribution",
   "main": "dist/index.ts",
