@@ -1,0 +1,12 @@
+{
+  "name": "rnorm",
+  "version": "0.1.0",
+  "description": "A function to generate random numbers based on a normal distribution",
+  "main": "dist/index.ts",
+  "types": "dist/index.d.ts",
+  "author": "Kai Sassnowski <me@kai-sassnowski.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.5.3"
+  }
+}
